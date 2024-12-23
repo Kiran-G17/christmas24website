@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redeem Your Voucher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #000;
+            color: #ffffff;
+        }
+        h1 {
+            color: #ff6f61;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 300px;
+            margin: 10px auto;
+            border: 2px solid #ff6f61;
+            border-radius: 5px;
+            background-color: #000;
+            color: #ffffff;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ff6f61;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e65c54;
+        }
+        .reward {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #333333;
+            border: 2px dashed #ff6f61;
+            border-radius: 5px;
+            display: none;
+            color: #ffffff;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+                color: #0f0;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulseBtn {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .pulseBtn {
+            animation: pulseBtn 2s infinite;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Redeem Your Voucher</h1><br>
+    <p class="pulse">Welcome Scallamoosh</p><br><br>
+    <p>Enter the voucher code from your lolly stick below to reveal your reward!</p><br><br><br><br>
+    <input type="text" id="voucherCode" placeholder="Enter your code"><br><br>
+    <button class="pulseBtn" onclick="redeemCode()">Redeem</button>
+    <div id="rewardBox" class="reward"></div>
+
+    <script>
+        // Predefined voucher codes and their rewards
+        const vouchers = {
+            "X7G2L9": " Movie marathon night with your favourite films and snacks! 🎥🍿",
+            "CHAR07": " Dinner at your favourite restaurant! 🍽️",
+            "P5Q4R2": " Board game and puzzle night! 🎲🧩",
+            "K1R4N7": " Yes Day! I have to say yes to everything for a whole day! 🙌",
+            "K4B6Y2": " Homemade dessert date! 🍦",
+            "J1Z3W9": " Build your own pizza night! 🍕",
+            "M6N1J3": " DIY cocktail night! 🍹 (probably mocktails)",
+            "Z9Y8X7": " Fry-up breakfast! 🍳",
+            "K3I7G4": " Make a blanket fort and watch a movie! 🛌🎬",
+            "A3B8K1": " Museum or art gallery visit! 🖼️"
+        };
+
+        function redeemCode() {
+            const code = document.getElementById("voucherCode").value.toUpperCase().trim();
+            const rewardBox = document.getElementById("rewardBox");
+
+            if (vouchers[code]) {
+                rewardBox.innerHTML = `<h2>🎉 Congratulations! 🎉</h2><p">You got a ${vouchers[code]}</p>`;
+                rewardBox.style.display = "block";
+            } else {
+                rewardBox.innerHTML = `<h2>❌ Invalid Code</h2><p>Sorry, that code doesn't exist. Try again!</p><p> (codes are case sensitive brev)</p>`;
+                rewardBox.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
